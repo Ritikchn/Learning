@@ -3,17 +3,9 @@ import { Searchbar } from "react-native-paper";
 import styled from "styled-components";
 import { RestaurantInfoCard } from "../components/utils/restautant-info-card.component";
 import { StatusBar, SafeAreaView, Text, View, FlatList } from "react-native";
-
+import { SafeArea } from "../components/utility/safe-area.componeent";
 const SearchBarBox = styled(View)`
   padding: ${(props) => props.theme.space[3]};
-`;
-const RestaurantInfoCardBox = styled(View)`
-  flex: 1;
-  padding: ${(props) => props.theme.space[3]};
-`;
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  margin-top: ${StatusBar.currentHeight}px;
 `;
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {

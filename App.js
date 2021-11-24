@@ -6,26 +6,54 @@ import { RestautantsScreen } from "./src/screens/restautants.screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import { RestaurantInfoCard } from "./src/components/utils/restautant-info-card.component";
 
+import { SafeArea } from "./src/components/utility/safe-area.componeent";
 const Tab = createBottomTabNavigator();
-function SettingsScreen() {
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Maps: "md-map",
+  Settings: "md-settings",
+};
+const SettingsScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
+    <SafeArea>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Settings!</Text>
+      </View>
+    </SafeArea>
   );
-}
+};
+const MapScreen = () => {
+  return (
+    <SafeArea>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Maps!</Text>
+      </View>
+    </SafeArea>
+  );
+};
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
+  };
+};
 const MyTabs = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={RestautantsScreen} />
+      <Tab.Navigator screenOptions={createScreenOptions}>
+        <Tab.Screen name="Restaurants" component={RestautantsScreen} />
+        <Tab.Screen name="Maps" component={MapScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>

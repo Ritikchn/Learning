@@ -62,7 +62,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                 <Icon source={{ uri: icon }} />
               </SectionEnd>
             </Section>
-            <Address>{address}</Address>
+            {/* <Address>{address}</Address> */}
           </Info>
         </Card.Content>
       </RestaurantCard>

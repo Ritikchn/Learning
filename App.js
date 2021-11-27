@@ -12,12 +12,12 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-
+import { RestaurantContextProvider } from "./src/services/restautants/restaurant.context";
 import { SafeArea } from "./src/components/utility/safe-area.componeent";
 const Tab = createBottomTabNavigator();
 const TAB_ICON = {
-  Restaurants: "md-restaurant",
-  Maps: "md-map",
+  Restaurant: "md-restaurant",
+  Map: "md-map",
   Settings: "md-settings",
 };
 const SettingsScreen = () => {
@@ -52,8 +52,8 @@ const MyTabs = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={createScreenOptions}>
-        <Tab.Screen name="Restaurants" component={RestautantsScreen} />
-        <Tab.Screen name="Maps" component={MapScreen} />
+        <Tab.Screen name="Restaurant" component={RestautantsScreen} />
+        <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
@@ -70,9 +70,10 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <MyTabs />
-        {/* <RestautantsScreen /> */}
-        <ExpoStatusBar style={"auto"} />
+        <RestaurantContextProvider>
+          <MyTabs />
+          <ExpoStatusBar style={"auto"} />
+        </RestaurantContextProvider>
       </ThemeProvider>
     </>
   );

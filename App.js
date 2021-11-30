@@ -14,6 +14,7 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { RestaurantContextProvider } from "./src/services/restautants/restaurant.context";
 import { SafeArea } from "./src/components/utility/safe-area.componeent";
+import { LocationContextProvider } from "./src/services/location/location.context";
 const Tab = createBottomTabNavigator();
 const TAB_ICON = {
   Restaurant: "md-restaurant",
@@ -70,10 +71,12 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantContextProvider>
-          <MyTabs />
-          <ExpoStatusBar style={"auto"} />
-        </RestaurantContextProvider>
+        <LocationContextProvider>
+          <RestaurantContextProvider>
+            <MyTabs />
+            <ExpoStatusBar style={"auto"} />
+          </RestaurantContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
     </>
   );

@@ -16,7 +16,7 @@ import {
   Rating,
   Open,
 } from "./restaurant-info-components.styles";
-
+import { Favourites } from "../favourites/favourites.component";
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "some Recipe",
@@ -34,6 +34,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   return (
     <>
       <RestaurantCard>
+        <Favourites restaurant={restaurant} />
         <RestaurantCardCover
           source={{
             uri: photos[0],
